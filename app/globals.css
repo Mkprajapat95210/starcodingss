@@ -1,0 +1,58 @@
+/* Minimal globals - all design CSS comes from /assets/css/ loaded in layout.tsx */
+
+/* Fix for Select dropdowns to match input fields in the theme */
+.contact-form-wrapper select.input-field {
+    width: 100%;
+    height: 60px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 0 20px;
+    color: #a0a0a0;
+    font-size: 16px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23a0a0a0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    transition: 0.3s;
+}
+
+.contact-form-wrapper select.input-field:focus {
+    border-color: #ff3838;
+    color: #fff;
+}
+
+.contact-form-wrapper select.input-field option {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Custom Webkit Scrollbar for Dropdown Menu */
+.custom-dropdown-list::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-dropdown-list::-webkit-scrollbar-track {
+    background: transparent; 
+    border-radius: 4px;
+}
+.custom-dropdown-list::-webkit-scrollbar-thumb {
+    background: #333; 
+    border-radius: 4px;
+}
+.custom-dropdown-list::-webkit-scrollbar-thumb:hover {
+    background: #ff3838; 
+}
+
+/* Swiper Pagination Red Color Fix */
+.tmp-swiper-pagination .swiper-pagination-bullet-active {
+    background: #ff3838 !important;
+    opacity: 1;
+}
+
+.tmp-swiper-pagination .swiper-pagination-bullet {
+    background: #555;
+}
