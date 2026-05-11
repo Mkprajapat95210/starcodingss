@@ -41,19 +41,46 @@ export default async function HomePortfolio() {
             <p className="text-center col-12 py-5 text-gray-500">No featured projects found. Add projects and set them as featured in the database.</p>
           ) : (
             projects.map((project, index) => {
-              const imageSrc = project.imageUrl || '/assets/images/blog/blog-img-1.jpg';
+              // Check all possible variations of the image URL column name from Supabase
+              const rawImageUrl = (project as any).imageurl || project.imageUrl || (project as any).image_url;
+              
+              // Handle Supabase URL correctly
+              let imageSrc = rawImageUrl || '/assets/images/blog/blog-img-1.jpg';
+              
+              // If the imageUrl is just a path (not a full URL), construct the public URL
+              if (rawImageUrl && !rawImageUrl.startsWith('http')) {
+                const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+                imageSrc = `${supabaseUrl}/storage/v1/object/public/projects/${rawImageUrl}`;
+              }
+
               const title = project.title || 'Untitled Project';
               const category = project.category || 'PROJECT';
               const link = project.link || '#';
 
               return (
-                <div key={project.id || index} className="col-lg-6 col-md-6">
+                <div key={project.id || index} className="col-lg-6 col-md-6 mb-5">
                   <div className={`latest-portfolio-card ${index % 2 !== 0 ? 'mt_md--50' : ''} tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-1`}>
-                    <div className="portfoli-card-img">
-                      <div className="img-box v2">
+                    <div className="portfoli-card-img" style={{ overflow: 'hidden', borderRadius: '12px' }}>
+                      <div className="img-box v2" style={{ backgroundColor: '#1a1a1a' }}>
                         <Link href={link}>
-                          <Image className="img-primary hidden-on-mobile" src={imageSrc} alt={title} width={400} height={300} style={{ objectFit: 'cover' }} />
-                          <Image className="img-secondary" src={imageSrc} alt={title} width={400} height={300} style={{ objectFit: 'cover' }} />
+                          <Image 
+                            className="img-primary hidden-on-mobile w-100" 
+                            src={imageSrc} 
+                            alt={title} 
+                            width={1200} 
+                            height={800} 
+                            style={{ width: '100%', height: '450px', objectFit: 'cover', objectPosition: 'top center' }} 
+                            unoptimized={imageSrc.startsWith('http')}
+                          />
+                          <Image 
+                            className="img-secondary w-100" 
+                            src={imageSrc} 
+                            alt={title} 
+                            width={1200} 
+                            height={800} 
+                            style={{ width: '100%', height: '450px', objectFit: 'cover', objectPosition: 'top center' }} 
+                            unoptimized={imageSrc.startsWith('http')}
+                          />
                         </Link>
                       </div>
                     </div>
