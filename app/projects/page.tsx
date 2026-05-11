@@ -5,6 +5,7 @@ import ProjectFilter from '@/components/ui/ProjectFilter';
 import { supabase } from '@/lib/supabase';
 import { Project, Category } from '@/types';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -85,7 +86,18 @@ export default async function ProjectsPage({ searchParams }: Props) {
               <p className="text-center col-12 py-5" style={{ color: 'var(--color-heading)' }}>No projects found in this category.</p>
             ) : (
               projects.map((project, idx) => {
-                const imageSrc = project.imageUrl || '/assets/images/blog/blog-img-1.jpg';
+                // Check all possible variations of the image URL column name
+                const rawImageUrl = (project as any).imageurl || project.imageUrl || (project as any).image_url;
+                
+                // Handle Supabase URL correctly
+                let imageSrc = rawImageUrl || '/assets/images/blog/blog-img-1.jpg';
+                
+                // If the imageUrl is just a path (not a full URL), construct the public URL
+                if (rawImageUrl && !rawImageUrl.startsWith('http')) {
+                  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+                  imageSrc = `${supabaseUrl}/storage/v1/object/public/projects/${rawImageUrl}`;
+                }
+
                 const title = project.title || 'Untitled Project';
                 const description = project.summary || project.description || 'Project description unavailable.';
                 const link = project.link || '#';
@@ -94,10 +106,23 @@ export default async function ProjectsPage({ searchParams }: Props) {
                 return (
                   <div key={project.id} className="col-lg-6 col-md-6 mb-5">
                     <div className={`latest-portfolio-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-${animationOrder}`}>
-                      <div className="portfoli-card-img">
-                        <div className="img-box v2">
+                      <div className="portfoli-card-img" style={{ overflow: 'hidden', borderRadius: '12px' }}>
+                        <div className="img-box v2" style={{ backgroundColor: '#1a1a1a' }}>
                           <Link className="tmp-scroll-trigger tmp-zoom-in animation-order-1" href={link}>
-                            <img className="w-100" src={imageSrc} alt={title} style={{ height: '350px', objectFit: 'cover' }} />
+                            <Image 
+                              className="w-100" 
+                              src={imageSrc} 
+                              alt={title} 
+                              width={1200} 
+                              height={800} 
+                              style={{ 
+                                width: '100%',
+                                height: '450px', 
+                                objectFit: 'cover',
+                                objectPosition: 'top center'
+                              }}
+                              unoptimized={imageSrc.startsWith('http')}
+                            />
                           </Link>
                         </div>
                       </div>
