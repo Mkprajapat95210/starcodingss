@@ -22,6 +22,7 @@ export default function Footer() {
                         alt="Starcode – Full-Stack Web & App Development Company"
                         width={150}
                         height={40}
+                        style={{ height: 'auto' }}
                       />
                     </Link>
                   </div>
@@ -82,6 +83,7 @@ export default function Footer() {
             alt="footer-img"
             width={400}
             height={200}
+            style={{ width: 'auto' }}
           />
         </div>
       </footer>

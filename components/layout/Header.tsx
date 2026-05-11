@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import ThemeToggle from '../ui/ThemeToggle';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -66,6 +67,7 @@ export default function Header() {
                     </div>
                   </div>
                   <div className="actions-area">
+                    <ThemeToggle />
                     <div className="tmp-side-collups-area d-none d-xl-block">
                       <button className="tmp-menu-bars tmp_button_active">
                         <i className="fa-regular fa-bars-staggered"></i>
@@ -197,7 +199,8 @@ export default function Header() {
                   />
                 </Link>
               </div>
-              <div className="close-menu">
+              <div className="close-menu" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <ThemeToggle />
                 <button className="close-button tmp-round-action-btn">
                   <i className="fa-sharp fa-light fa-xmark"></i>
                 </button>

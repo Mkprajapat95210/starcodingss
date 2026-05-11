@@ -36,7 +36,7 @@ function CustomDropdown({
   return (
     <div className="form-group" style={{ position: 'relative' }} ref={dropdownRef}>
       <input type="hidden" name={name} value={value} required />
-      
+
       <div onClick={() => setIsOpen(!isOpen)} style={{ position: 'relative', cursor: 'pointer' }}>
         <input
           type="text"
@@ -117,7 +117,7 @@ export default function ReviewFormSection() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [projects, setProjects] = useState<{ id: string; title: string }[]>([]);
-  
+
   // Custom dropdown states
   const [selectedProject, setSelectedProject] = useState('');
   const [selectedRating, setSelectedRating] = useState('');
@@ -370,7 +370,7 @@ export default function ReviewFormSection() {
                               />
                             </div>
                           </div>
-                          
+
                           <div className="col-lg-12">
                             <CustomDropdown
                               name="project_id"

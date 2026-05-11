@@ -69,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -83,6 +83,18 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/css/style.css" />
         <link rel="stylesheet" href="/assets/css/contact-form.css" />
         <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme') || 'dark';
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
       </head>
       <body className="color-primary-2nd">
         <Script
@@ -139,13 +151,6 @@ export default function RootLayout({
         <div className="scrollToTop">
           <div className="arrowUp"><i className="fa-light fa-arrow-up"></i></div>
           <div className="water">
-            <svg viewBox="0 0 560 100" className="water_wave water_wave_back"><use xlinkHref="#wave" /></svg>
-            <svg viewBox="0 0 560 100" className="water_wave water_wave_front"><use xlinkHref="#wave" /></svg>
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 100" style={{ display: 'none' }}>
-              <symbol id="wave">
-                <path d="M0,20 C70,20 70,0 140,0 C210,0 210,20 280,20 C350,20 350,0 420,0 C490,0 490,20 560,20 V100 H0 Z" />
-              </symbol>
-            </svg>
           </div>
         </div>
 

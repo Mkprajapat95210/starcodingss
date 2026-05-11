@@ -90,7 +90,10 @@ export default function AboutPage() {
                         { label: 'ADOBE ILLUSTRATOR', percent: '70%', dur: '0.8s', delay: '.6s' },
                       ].map((s) => (
                         <div key={s.label} className="progress-charts">
-                          <h6 className="heading heading-h6">{s.label}</h6>
+                          <div className="progress-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '10px' }}>
+                            <h6 className="heading heading-h6" style={{ margin: 0 }}>{s.label}</h6>
+                            <span className="percent-label" style={{ fontSize: '14px', fontWeight: 'bold' }}>{s.percent}</span>
+                          </div>
                           <div className="progress">
                             <div
                               className="progress-bar wow fadeInLeft"
@@ -102,7 +105,6 @@ export default function AboutPage() {
                               aria-valuemin={0}
                               aria-valuemax={100}
                             >
-                              <span className="percent-label">{s.percent}</span>
                             </div>
                           </div>
                         </div>
@@ -126,7 +128,10 @@ export default function AboutPage() {
                         { label: 'ADOBE ILLUSTRATOR', percent: '70%', dur: '0.8s', delay: '.6s' },
                       ].map((s) => (
                         <div key={s.label + '-dev'} className="progress-charts">
-                          <h6 className="heading heading-h6">{s.label}</h6>
+                          <div className="progress-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '10px' }}>
+                            <h6 className="heading heading-h6" style={{ margin: 0 }}>{s.label}</h6>
+                            <span className="percent-label" style={{ fontSize: '14px', fontWeight: 'bold' }}>{s.percent}</span>
+                          </div>
                           <div className="progress">
                             <div
                               className="progress-bar wow fadeInLeft"
@@ -138,7 +143,6 @@ export default function AboutPage() {
                               aria-valuemin={0}
                               aria-valuemax={100}
                             >
-                              <span className="percent-label">{s.percent}</span>
                             </div>
                           </div>
                         </div>

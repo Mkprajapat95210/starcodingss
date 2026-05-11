@@ -96,19 +96,18 @@
         }
 
         $servicesWidget.on("mouseenter", ".service-item", function () {
+          $activeBg.css({ opacity: 1 });
           updateActiveService($(this));
         });
 
         $servicesWidget.on("mouseleave", function () {
           var $currentElement = $servicesWidget.find(".current");
-          updateActiveService($currentElement);
-
-          $servicesWidget.find(".service-item").each(function () {
-            var $item = $(this);
-            if (!$item.is($currentElement.closest(".service-item"))) {
-              $item.removeClass("mleave");
-            }
-          });
+          if ($currentElement.length) {
+            updateActiveService($currentElement);
+          } else {
+            $activeBg.css({ height: "0px", opacity: 0 });
+            $servicesWidget.find(".service-item").removeClass("mleave");
+          }
         });
 
         // Initial call

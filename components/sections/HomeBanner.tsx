@@ -1,7 +1,36 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function HomeBanner() {
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+  useEffect(() => {
+    // Read initial theme from DOM
+    const currentTheme = document.documentElement.getAttribute('data-theme') as 'dark' | 'light';
+    if (currentTheme) setTheme(currentTheme);
+
+    // Watch for theme changes via MutationObserver
+    const observer = new MutationObserver(() => {
+      const updated = document.documentElement.getAttribute('data-theme') as 'dark' | 'light';
+      if (updated) setTheme(updated);
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const heroImage =
+    theme === 'light'
+      ? '/assets/images/home/light-hero.png'
+      : '/assets/images/home/home-hero.png';
+
   return (
     <div className="rpp-banner-three-area">
       <div className="container">
@@ -46,15 +75,17 @@ export default function HomeBanner() {
           <div className="bg-benner-img-three">
             <Image
               className="tmp-scroll-trigger tmp-zoom-in animation-order-2"
-              src="/assets/images/home/home-hero.png"
+              src={heroImage}
               alt="Star Code Team Graphic"
               width={800}
               height={600}
               priority
             />
+            {/* Premium overlay for smooth blending */}
+            <div className="banner-image-overlay-new"></div>
           </div>
-          <h2 className="texts-one up-down-2">WEB DESIGN</h2>
-          <h2 className="texts-two up-down style">APP DESIGN</h2>
+          <h2 className="texts-one up-down-2 outlined-text">WEB DESIGN</h2>
+          <h2 className="texts-two up-down style outlined-text-red">APP DESIGN</h2>
         </div>
       </div>
     </div>

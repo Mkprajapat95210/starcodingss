@@ -58,6 +58,99 @@
 /*----Default Css----*/
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&amp;display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap");
+:root[data-theme='light'] {
+  --color-primary: #FF014F;
+  --color-primary-alt: #ff014dd9;
+  --color-secondary: #f6f6f6; /* Light Body BG */
+  --color-white: #ffffff;
+  --color-gray: #65676b;
+  --color-gray-2: #ffffff; /* White Cards */
+  --color-subtitle: #f9004d;
+  --background-color-1: #ffffff;
+  --background-color-2: #ffffff;
+  --background-color-3: #ffffff;
+  --background-color-4: #e4e6ea;
+  --background-color-5: #EDF5FF;
+  --color-card: #ffffff;
+  --color-heading: #1d1d1d;
+  --color-body: #65676b;
+  --color-dark: #f3f3f3;
+  --color-text-1: #1d1d1d;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-white: rgba(0, 0, 0, 0.08);
+  --gradient-box: linear-gradient(145deg, #ffffff, #f3f3f3);
+}
+
+
+/* My Skill (Services Widget v1) Light Mode Fix */
+:root[data-theme='light'] .services-widget.v1 .service-item .my-skill-card .card-para,
+:root[data-theme='light'] .services-widget.v1 .service-item .my-skill-card .main-title,
+:root[data-theme='light'] .services-widget.v1 .service-item .my-skill-card .sub-title {
+    color: #1d1d1d !important;
+}
+
+:root[data-theme='light'] .services-widget.v1 .service-item:hover .my-skill-card .card-para,
+:root[data-theme='light'] .services-widget.v1 .service-item:hover .my-skill-card .main-title,
+:root[data-theme='light'] .services-widget.v1 .service-item:hover .my-skill-card .sub-title {
+    color: #ffffff !important;
+}
+
+:root[data-theme='light'] .services-widget.v1 .service-item .my-skill-card .card-icon i {
+    color: var(--color-primary) !important;
+}
+
+:root[data-theme='light'] .services-widget.v1 .service-item:hover .my-skill-card .card-icon i {
+    color: #ffffff !important;
+}
+
+/* Breadcrumb Light Mode Fix */
+:root[data-theme='light'] .breadcrumb-area {
+    background: #f6f6f6 !important;
+}
+
+:root[data-theme='light'] .breadcrumb-area .title {
+    color: var(--color-heading) !important;
+}
+
+:root[data-theme='light'] .breadcrumb-area .page-list li,
+:root[data-theme='light'] .breadcrumb-area .page-list li a {
+    color: var(--color-body) !important;
+}
+
+:root[data-theme='light'] .close-button.tmp-round-action-btn {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: var(--color-heading) !important;
+}
+
+:root[data-theme='light'] .logo img.logo-white {
+  display: none !important;
+}
+
+:root[data-theme='light'] .logo img.logo-dark {
+  display: block !important;
+}
+
+:root:not([data-theme='light']) .logo img.logo-white {
+  display: block !important;
+}
+
+:root:not([data-theme='light']) .logo img.logo-dark {
+  display: none !important;
+}
+
+:root[data-theme='light'] .header-one.sticky {
+  background: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+:root[data-theme='light'] .tmp-mainmenu li a {
+  color: #1d1d1d !important;
+}
+
+:root[data-theme='light'] .tmp-mainmenu li.active a {
+  color: var(--color-primary) !important;
+}
+
 :root {
   --color-primary: #FF014F;
   --color-primary-alt: #ff014dd9;
@@ -10980,6 +11073,11 @@ body.sal-disabled [data-sal|=flip] {
     max-width: 135px;
   }
 }
+.header-one .actions-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .header-one .actions-area .social-link {
   display: none;
 }
@@ -20745,42 +20843,7 @@ section.clients-testimonial-area {
   height: 100%;
   transform: translateY(100%);
   background-color: var(--color-primary);
-  transition: all 0.3s;
-}
-.scrollToTop .water svg use {
-  position: relative;
-}
-
-.scrollToTop .water_wave {
-  width: 200%;
-  position: absolute;
-  bottom: calc(100% - 2px);
-  height: 80px;
-}
-
-.scrollToTop .water_wave_back {
-  right: 0;
-  fill: #FF014F;
-  opacity: 0.5;
-  animation: wave-back 1.4s infinite linear;
-}
-
-.scrollToTop .water_wave_front {
-  left: 0;
-  fill: #FF014F;
-  margin-bottom: -1px;
-  animation: wave-front 0.7s infinite linear;
-}
-
-@keyframes wave-front {
-  100% {
-    transform: translateX(-50%);
-  }
-}
-@keyframes wave-back {
-  100% {
-    transform: translateX(50%);
-  }
+  transition: none !important;
 }
 body.loaded {
   overflow: hidden !important;
@@ -23313,16 +23376,18 @@ section.svg-container svg.radial-progress:nth-last-of-type(0) {
   border-radius: 14px;
   background: var(--color-primary);
 }
-.progress-charts .progress .progress-bar span.percent-label {
-  position: absolute;
-  right: 0;
-  top: -37px;
+.progress-charts .progress .progress-bar span.percent-label,
+.progress-charts .progress-header .percent-label {
   font-weight: 400;
-  color: var(--color-heading);
+  color: #ffffff;
   font-size: 14px;
   text-transform: uppercase;
   opacity: 0.9;
   font-family: var(--font-secondary);
+}
+
+:root[data-theme='light'] .progress-charts .progress-header .percent-label {
+    color: var(--color-primary) !important;
 }
 
 /*-----------------------

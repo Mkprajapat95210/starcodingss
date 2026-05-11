@@ -71,19 +71,18 @@ export default async function ProjectsPage({ searchParams }: Props) {
             <div className="section-sub-title center-title tmp-scroll-trigger tmp-fade-in animation-order-1">
               <span className="subtitle">Latest Work</span>
             </div>
-            <h2 className="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2 text-white">
+            <h2 className="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">
               Our Recent Projects & Success Stories
             </h2>
-            <p className="description section-sm tmp-scroll-trigger tmp-fade-in animation-order-3 text-gray-400 mx-auto" style={{ maxWidth: '800px' }}>
+            <p className="description section-sm tmp-scroll-trigger tmp-fade-in animation-order-3 mx-auto" style={{ maxWidth: '800px', color: 'var(--color-body)' }}>
               We work on Websites, Mobile Apps, and Business Automation. Here are some of our best projects.
-
             </p>
           </div>
 
           <ProjectFilter categories={categories} />
           <div className="row mt--30" id="projects-container">
             {projects.length === 0 ? (
-              <p className="text-center col-12 py-5 text-white">No projects found in this category.</p>
+              <p className="text-center col-12 py-5" style={{ color: 'var(--color-heading)' }}>No projects found in this category.</p>
             ) : (
               projects.map((project, idx) => {
                 const imageSrc = project.imageUrl || '/assets/images/blog/blog-img-1.jpg';

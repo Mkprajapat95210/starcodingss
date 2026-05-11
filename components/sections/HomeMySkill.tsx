@@ -11,7 +11,7 @@ export default function HomeMySkill() {
           </h2>
         </div>
         <div className="services-widget v1">
-          <div className="service-item current tmp-scroll-trigger tmp-fade-in animation-order-1">
+          <div className="service-item tmp-scroll-trigger tmp-fade-in animation-order-1">
             <div className="my-skill-card">
               <div className="card-icon">
                 <i className="fa-light fa-laptop-code"></i>
@@ -79,8 +79,6 @@ export default function HomeMySkill() {
             </div>
             <button className="service-link modal-popup"></button>
           </div>
-
-          <div className="active-bg wow fadeInUp mleave"></div>
         </div>
       </div>
     </section>

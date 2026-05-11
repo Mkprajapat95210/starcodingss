@@ -25,12 +25,15 @@ export default function HomeSkills() {
                 <h2 className="custom-title mb--30 tmp-scroll-trigger tmp-fade-in animation-order-1">
                   APP DEVELOPMENT{' '}
                   <span>
-                    <Image src="/assets/images/custom-line/custom-line.png" alt="custom-line" width={100} height={10} />
+                    <Image src="/assets/images/custom-line/custom-line.png" alt="custom-line" width={100} height={10} style={{ height: 'auto' }} />
                   </span>
                 </h2>
                 {appSkills.map((skill) => (
                   <div key={skill.label} className="progress-charts">
-                    <h6 className="heading heading-h6">{skill.label}</h6>
+                    <div className="progress-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '10px' }}>
+                        <h6 className="heading heading-h6" style={{ margin: 0 }}>{skill.label}</h6>
+                        <span className="percent-label" style={{ fontSize: '14px', fontWeight: 'bold' }}>{skill.percent}</span>
+                    </div>
                     <div className="progress">
                       <div
                         className="progress-bar wow fadeInLeft"
@@ -42,7 +45,6 @@ export default function HomeSkills() {
                         aria-valuemin={0}
                         aria-valuemax={100}
                       >
-                        <span className="percent-label">{skill.percent}</span>
                       </div>
                     </div>
                   </div>
@@ -61,7 +63,10 @@ export default function HomeSkills() {
                 </h2>
                 {webSkills.map((skill) => (
                   <div key={skill.label} className="progress-charts">
-                    <h6 className="heading heading-h6">{skill.label}</h6>
+                    <div className="progress-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '10px' }}>
+                        <h6 className="heading heading-h6" style={{ margin: 0 }}>{skill.label}</h6>
+                        <span className="percent-label" style={{ fontSize: '14px', fontWeight: 'bold' }}>{skill.percent}</span>
+                    </div>
                     <div className="progress">
                       <div
                         className="progress-bar wow fadeInLeft"
@@ -73,7 +78,6 @@ export default function HomeSkills() {
                         aria-valuemin={0}
                         aria-valuemax={100}
                       >
-                        <span className="percent-label">{skill.percent}</span>
                       </div>
                     </div>
                   </div>

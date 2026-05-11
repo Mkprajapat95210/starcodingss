@@ -29,40 +29,40 @@ export default function HomeSupportedCompanies() {
         <div style={{ marginBottom: '40px' }}>
           <LogoLoop 
             logos={row1} 
-            speed={80} 
+            speed={60} 
             direction="right" 
             renderItem={(item) => (
               <img 
                 src={item.src} 
                 alt={item.alt} 
-                style={{ height: `${(item as any).height}px`, width: 'auto', objectFit: 'contain' }} 
+                style={{ height: 'auto', maxHeight: '80px', width: 'auto', objectFit: 'contain' }} 
               />
             )}
-            gap={80} 
+            gap={40} 
             hoverSpeed={0} 
             scaleOnHover 
             fadeOut 
-            fadeOutColor="#060606"
+            fadeOutColor="var(--color-secondary)"
           />
         </div>
 
         <div>
           <LogoLoop 
             logos={row2} 
-            speed={80} 
+            speed={60} 
             direction="left" 
             renderItem={(item) => (
               <img 
                 src={item.src} 
                 alt={item.alt} 
-                style={{ height: `${(item as any).height}px`, width: 'auto', objectFit: 'contain' }} 
+                style={{ height: 'auto', maxHeight: '80px', width: 'auto', objectFit: 'contain' }} 
               />
             )}
-            gap={80} 
+            gap={40} 
             hoverSpeed={0} 
             scaleOnHover 
             fadeOut 
-            fadeOutColor="#060606"
+            fadeOutColor="var(--color-secondary)"
           />
         </div>
       </div>
